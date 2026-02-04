@@ -78,12 +78,18 @@
   <!-- Footer placeholder -->
     <div id="header"></div>
     <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
+        async function loadHeader() {
+            try {
+                const response = await fetch('./header.html');
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const data = await response.text();
                 document.getElementById('header').innerHTML = data;
-            })
-            .catch(err => console.error('Error loading header:', err));
+            } catch (err) {
+                console.error('Error loading header:', err);
+                document.getElementById('header').innerHTML = '<p>Error loading header</p>';
+            }
+        }
+        loadHeader();
     </script>
     
   <section class="g-lg-3">
@@ -100,87 +106,224 @@
               </h2>
               <p>
                 Junior frontend developer (2+ years) and 
-e-commerce specialist (5+ years), with dual expertise in web development and digital marketing, perfectly suited to SaaS environments and e-commerce platforms.
+                e-commerce specialist (5+ years), with dual expertise in web development and digital marketing, perfectly suited to SaaS environments and e-commerce platforms.
               </p>
             </div>
           </div>
         </div>
 
-        <div id="filters" class="button-group d-flex flex-wrap gap-4 justify-content-center py-5" data-aos="fade-up">
-          <a href="#" class="btn btn-primary text-decoration-none text-uppercase is-checked"
-            data-filter=".photography">Photography</a>
-          <a href="#" class="btn btn-primary text-decoration-none text-uppercase" data-filter=".graphicdesign">Graphic
-            Design</a>
-          <a href="#" class="btn btn-primary text-decoration-none text-uppercase"
-            data-filter=".illustrations">Illustrations</a>
-          <a href="#" class="btn btn-primary text-decoration-none text-uppercase" data-filter=".branding">Branding</a>
+        <div id="filters" class="button-group d-flex flex-wrap gap-3 justify-content-center py-5" data-aos="fade-up">
+            <a href="#" class="btn btn-primary text-decoration-none text-uppercase is-checked"
+              data-filter=".webdesign">Web Design</a>
+            <a href="#" class="btn btn-primary text-decoration-none text-uppercase" data-filter=".webdev">Web Development</a>
+            <a href="#" class="btn btn-primary text-decoration-none text-uppercase"
+              data-filter=".socialMedia">Social Media</a>
+            <a href="#" class="btn btn-primary text-decoration-none text-uppercase" data-filter=".ads">Meta & Ads</a>
+          </div>
         </div>
 
       </div>
 
       <div class="pb-5 mb-5">
         <div class="grid p-0 clearfix row row-cols-2 row-cols-lg-3 row-cols-xl-4" data-aos="fade-up">
-          <div class="col mb-4 portfolio-item photography">
-            <a href="single-portfolio.html" data-lightbox="illustration-1" data-title="Madu Jewelry"
-              title="Sample Caption goes here for Portfolio Item 1."><img src="/images/madu-web.png"
+          <div class="col mb-4 portfolio-item webdesign">
+            <a href="/portfolios/single-portfolio-madu.html" data-lightbox="illustration-1" data-title="Madu's Jewelry brand"
+              title="Madu's eco-friendly jewelry"><img src="/images/illustration-2-madu.png"
                 class="img-fluid rounded-4" alt="portfolio"></a>
           </div>
-          <div class="col mb-4 portfolio-item photography graphicdesign illustrations">
-            <a href="single-portfolio.html" data-lightbox="illustration-2" data-title="illustration-2"
-              title="Sample Caption goes here for Portfolio Item 2."><img src="images/illustration-2.jpg"
+          <div class="col mb-4 portfolio-item webdev">
+            <a href="/images/web-madu.png" data-lightbox="illustration-1" data-title="Madu's webpage"
+              title="Madu's eco-friendly jewelry"><img src="/images/web-madu.png"
                 class="img-fluid rounded-4" alt="portfolio"></a>
           </div>
-          <div class="col mb-4 portfolio-item branding graphicdesign">
-            <a href="single-portfolio.html" data-lightbox="illustration-3" data-title="illustration-3"
-              title="Sample Caption goes here for Portfolio Item 3."><img src="images/illustration-3.jpg"
+            <!-- SOCIAL MEDIA -->
+          <div class="col mb-4 portfolio-item socialMedia">
+            <a href="images/social-cut-version/resized-post/social-madu-post.png" data-lightbox="illustration-1" data-title="Madu's jewelry post on unique pieces"
+              title="Madu's eco-friendly jewelry"><img src="images/social-cut-version/resized-post/social-madu2-post.png"
                 class="img-fluid rounded-4" alt="portfolio"></a>
           </div>
-          <div class="col mb-4 portfolio-item graphicdesign">
-            <a href="single-portfolio.html" data-lightbox="illustration-4" data-title="illustration-4"
-              title="Sample Caption goes here for Portfolio Item 4."><img src="images/illustration-4.jpg"
+          <div class="col mb-4 portfolio-item">
+            <a href="images/social-cut-version/social-madu-facebook.png" data-lightbox="illustration-1" data-title="Madu's facebook page"
+              title="Madu's eco-friendly jewelry"><img src="images/social-cut-version/social-madu-facebook.png"
                 class="img-fluid rounded-4" alt="portfolio"></a>
           </div>
-          <div class="col mb-4 portfolio-item photography illustrations">
-            <a href="single-portfolio.html" data-lightbox="illustration-5" data-title="illustration-5"
-              title="Sample Caption goes here for Portfolio Item 5."><img src="images/illustration-5.jpg"
+          <div class="col mb-4 portfolio-item">
+            <a href="images/social-cut-version/social-madu-insta.png" data-lightbox="illustration-1" data-title="Madu's instagram accounty"
+              title="Madu's instagram account"><img src="images/social-cut-version/social-madu-insta.png"
                 class="img-fluid rounded-4" alt="portfolio"></a>
           </div>
-          <div class="col mb-4 portfolio-item graphicdesign">
-            <a href="single-portfolio.html" data-lightbox="illustration-1" data-title="Madu Jewelry"
-              title="Sample Caption goes here for Portfolio Item 6."><img src="/images/illustration-1-madu.png"
+          <!-- ADS -->
+          <div class="col mb-4 portfolio-item ads">
+            <a href="images/ads/ads-madu-post.png" data-lightbox="illustration-1" data-title="Madu's ads for Meta, the main goal is understanding international clients for expansion in Europe"
+              title="Madu's ads"><img src="images/ads/ads-madu2-post.png"
                 class="img-fluid rounded-4" alt="portfolio"></a>
           </div>
-          <div class="col mb-4 portfolio-item graphicdesign photography">
-            <a href="single-portfolio.html" data-lightbox="illustration-2" data-title="illustration-2"
-              title="Sample Caption goes here for Portfolio Item 7."><img src="images/illustration-2.jpg"
+          <!-- illustration-2 Aurawear-->
+          <div class="col mb-4 portfolio-item webdesign">
+            <a href="/images/illustration-1-aurawear.png" data-lightbox="illustration-2" data-title="Aura Wear's brand"
+              title="Aura Wear's plus size underwear"><img src="/images/illustration-2-aurawear.png"
                 class="img-fluid rounded-4" alt="portfolio"></a>
           </div>
-          <div class="col mb-4 portfolio-item illustrations graphicdesign">
-            <a href="single-portfolio.html" data-lightbox="illustration-3" data-title="illustration-3"
-              title="Sample Caption goes here for Portfolio Item 8."><img src="images/illustration-3.jpg"
+          <div class="col mb-4 portfolio-item webdev">
+            <a href="/images/web-aura.png" data-lightbox="illustration-2" data-title="Aura Wear's webpage"
+              title="Aura Wear's plus size underwear"><img src="/images/web-aura.png"
                 class="img-fluid rounded-4" alt="portfolio"></a>
           </div>
-          <div class="col mb-4 portfolio-item branding photography graphicdesign">
-            <a href="single-portfolio.html" data-lightbox="illustration-4" data-title="illustration-4"
-              title="Sample Caption goes here for Portfolio Item 9."><img src="images/illustration-4.jpg"
+          <!-- illustration-3 Machaflix-->
+          <div class="col mb-4 portfolio-item webdesign">
+            <a href="/images/illustration-1-machaflix.png" data-lightbox="illustration-3" data-title="Machaflix's brand product"
+              title="Macha Tea"><img src="/images/illustration-2-machaflix.png"
                 class="img-fluid rounded-4" alt="portfolio"></a>
           </div>
-          <div class="col mb-4 portfolio-item illustrations graphicdesign branding">
-            <a href="single-portfolio.html" data-lightbox="illustration-5" data-title="illustration-5"
-              title="Sample Caption goes here for Portfolio Item1 0."><img src="images/illustration-5.jpg"
+          <div class="col mb-4 portfolio-item webdev">
+            <a href="/images/web-machaflix.png" data-lightbox="illustration-3" data-title="Machaflix's webpage UGC section"
+              title="Macha Tea"><img src="/images/web-machaflix.png"
                 class="img-fluid rounded-4" alt="portfolio"></a>
           </div>
-          <div class="col mb-4 portfolio-item photography">
-            <a href="single-portfolio.html" data-lightbox="illustration-1" data-title="Madu Jewelry"
-              title="Sample Caption goes here for Portfolio Item1 1."><img src="/images/madu-web.png"
+          <!-- illustration-4 Un Bain Au Chocolat-->
+          <div class="col mb-4 portfolio-item webdesign">
+            <a href="/images/illustration-1-chocolat.png" data-lightbox="illustration-4" data-title="'Un Bain Au Chocolat' product"
+              title="Chocolatier"><img src="/images/illustration-2-chocolat.png"
                 class="img-fluid rounded-4" alt="portfolio"></a>
           </div>
-          <div class="col mb-4 portfolio-item photography">
-            <a href="single-portfolio.html" data-lightbox="illustration-2" data-title="illustration-2"
-              title="Sample Caption goes here for Portfolio Item1 2."><img src="images/illustration-2.jpg"
+          <div class="col mb-4 portfolio-item webdev">
+            <a href="/images/web-chocolat.png" data-lightbox="illustration-4" data-title="'Un Bain Au Chocolat' webpage with main events"
+              title="Chocolatier"><img src="/images/web-chocolat.png"
                 class="img-fluid rounded-4" alt="portfolio"></a>
           </div>
-
+          <!-- illustration-5 Kaivau-->
+          <div class="col mb-4 portfolio-item webdesign">
+            <a href="/images/illustration-1-kaivau.png" data-lightbox="illustration-5" data-title="Kaivau's underwear for sport brand post"
+              title="Kavau's underwear for sport"><img src="/images/illustration-2-kaivau.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <div class="col mb-4 portfolio-item webdev">
+            <a href="/images/web-kaivau.png" data-lightbox="illustration-5" data-title="Kaivau's spanish website"
+              title="Kavau's underwear for sport"><img src="/images/web-kaivau.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <!-- SOCIAL MEDIA -->
+          <div class="col mb-4 portfolio-item socialMedia">
+            <a href="/images/social-cut-version/resized-post/social-kaivau-post.png" data-lightbox="illustration-5" data-title="Kaivau's underwear for sport post"
+              title="Kavau's underwear for sport"><img src="/images/social-cut-version/resized-post/social-kaivau2-post.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <div class="col mb-4 portfolio-item">
+            <a href="/images/social-cut-version/social-kaivau-insta.png" data-lightbox="illustration-5" data-title="Kaivau's instagram account"
+              title="Kavau's underwear for sport"><img src="/images/social-cut-version/social-kaivau-insta.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <!-- illustration-6 ICADE EUREKA-->
+          <div class="col mb-4 portfolio-item webdev">
+            <a href="/images/web-icade-eureka-1.png" data-lightbox="illustration-6" data-title="Icade's color palette for their webpage Eureka"
+              title="Nuances Impression's webpage for ICADE's signalisation in Paris"><img src="images/web-icade-eureka-2.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <div class="col mb-4 portfolio-item">
+            <a href="/images/web-icade.png" data-lightbox="illustration-6" data-title="The maquette of ICADE's EUREKA localisation map of their panels in Paris"
+              title="Nuances Impression's webpage for ICADE's signalisation in Paris"><img src="images/web-icade.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <!-- illustration-7 SEMA WORLD-->
+          <div class="col mb-4 portfolio-item webdev">  
+            <a href="/images/web-sema.png" data-lightbox="illustration-7" data-title="SEMA WORLD official webpage for counter terrorism safety security using Wordpress"
+              title="Counter terrorism safety security"><img src="images/web-sema.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <!-- illustration-8 SJsolutions WebGestion et Camaradax-->
+          <div class="col mb-4 portfolio-item webdev">
+            <a href="images/web-sjsolutions.png" data-lightbox="illustration-8" data-title="Sjsolutions' webpage"
+              title="Digital transformation of businesses with business management software, online print ordering, in-store sales and online shops."><img src="images/web-sjsolutions.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <div class="col mb-4 portfolio-item">
+            <a href="images/web-camara.png" data-lightbox="illustration-8" data-title="Camaradax's webpage located in Dax selling photo services and products"
+              title="Digital transformation of businesses with business management software, online print ordering, in-store sales and online shops."><img src="images/web-camara.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <!-- illustration-9: Novedades Anime-->
+          <div class="col mb-4 portfolio-item socialMedia">
+            <a href="images/social-cut-version/resized-post/social-anime-post.png" data-lightbox="illustration-9" data-title="Anime News post"
+              title="Updates on latest Anime trends"><img src="images/social-cut-version/resized-post/social-anime2-post.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <div class="col mb-4 portfolio-item">
+            <a href="images/social-cut-version/social-anime-facebook.png" data-lightbox="illustration-9" data-title="Anime News' facebook page"
+              title="Updates on latest Anime trends"><img src="images/social-cut-version/social-novedadesAnime.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <div class="col mb-4 portfolio-item">
+            <a href="images/social-cut-version/social-anime-insta.png" data-lightbox="illustration-9" data-title="Anime News' instagram account"
+              title="Updates on latest Anime trends"><img src="images/social-cut-version/social-anime-insta.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <!-- ADS-->
+          <div class="col mb-4 portfolio-item ads">
+            <a href="images/ads/ads-anime-post.png" data-lightbox="illustration-9" data-title="Anime News' Meta ads was used exclusevily for Spain market to increase followers and engagement"
+              title="Updates on latest Anime trends"><img src="images/ads/ads-anime-post.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <!-- illustration-10: Ommflow-->
+          <div class="col mb-4 portfolio-item socialMedia">
+            <a href="images/social-cut-version/resized-post/social-ommflow-post.png" data-lightbox="illustration-10" data-title="Most popular youtube channel posts"
+              title="Ommflow Youtube Channel"><img src="images/social-cut-version/resized-post/social-ommflow2-post2.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <div class="col mb-4 portfolio-item">
+            <a href="images/social-cut-version/social-ommflow2-youtube.png" data-lightbox="illustration-10" data-title="Ommflow's youtube channel"
+              title="Ommflow Youtube Channel"><img src="images/social-cut-version/social-ommflow-youtube.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <div class="col mb-4 portfolio-item">
+            <a href="images/social-cut-version/social-ommflow-insta.png" data-lightbox="illustration-10" data-title="Ommflow's instagram account"
+              title="Social media trends on youtube"><img src="images/social-cut-version/social-ommflow-insta.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <!-- ADS-->
+          <div class="col mb-4 portfolio-item ads">
+            <a href="images/ads/ads-ommflow2-post.png" data-lightbox="illustration-10" data-title="Ommflow's ads where organically integrated in the youtube videos to promote products and collaborations, here we can see Kaivau's underwear for sport"
+              title="Social media trends on youtube"><img src="images/ads/ads-ommflow-post.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <!-- illustration-11: Soltie-->
+          <div class="col mb-4 portfolio-item socialMedia">
+            <a href="images/social-cut-version/resized-post/social-soltie-post.png" data-lightbox="illustration-11" data-title="Cat brush for hair post"
+              title="Cat brush for hair"><img src="images/social-cut-version/resized-post/social-soltie2-post.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>      
+          <div class="col mb-4 portfolio-item">
+            <a href="images/social-cut-version/social-soltie-facebook.png" data-lightbox="illustration-11" data-title="Soltie's Facebook"
+              title="Soltie's animal products"><img src="images/social-cut-version/social-soltie-facebook.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>    
+          <!-- ADS-->
+          <div class="col mb-4 portfolio-item ads">
+            <a href="images/ads/ads-soltie-post.png" data-lightbox="illustration-11" data-title="Meta ads in spanish market to increase followers, engagement and sales on ecommerce site"
+              title="Soltie's animal products"><img src="images/ads/ads-soltie-post.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>               
+          <!-- illustration-12: Emily in Paris-->
+          <div class="col mb-4 portfolio-item socialMedia">
+            <a href="images/social-cut-version/resized-post/solcial-emily-post.png" data-lightbox="illustration-12" data-title="Emily in Paris Walking Tour at Emily's appartment post"
+              title="Emily in Paris Walking Tour at Emily's appartment post"><img src="images/social-cut-version/resized-post/solcial-emily2-post.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <div class="col mb-4 portfolio-item">
+            <a href="images/social-cut-version/social-emily-facebook.png" data-lightbox="illustration-12" data-title="Emily's in Paris Walking Tour Facebook page"
+              title="Emily in Paris Walking Tour"><img src="images/social-cut-version/social-emily-facebook.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+          </div>
+          <!-- ADS-->
+        <div class="col mb-4 portfolio-item ads">
+            <a href="images/ads/ads-emily2-post.png" data-lightbox="illustration-12" data-title="Emily's in Paris Walking Tour Meta ads for increasing followers, engagement and sales on local tours"
+              title="Emily in Paris Walking Tour"><img src="images/ads/ads-emily-post.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+        </div>
+        <div class="col mb-4 portfolio-item ">
+            <a href="images/ads/ads-emily3-post.png" data-lightbox="illustration-12" data-title="Emily's in Paris Walking Tour Meta ads for increasing followers, engagement and sales on local tours"
+              title="Emily in Paris Walking Tour"><img src="images/ads/ads-emily3-post.png"
+                class="img-fluid rounded-4" alt="portfolio"></a>
+        </div>
         </div>
       </div>
 
