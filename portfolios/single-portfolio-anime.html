@@ -87,7 +87,7 @@
     <script>
         async function loadHeader() {
             try {
-                const response = await fetch('../header.html');
+                const response = await fetch('https://elenavaltierra.github.io/cv_portfolio_eng/header.html');
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const data = await response.text();
                 document.getElementById('header').innerHTML = data;
@@ -237,7 +237,7 @@
     <!-- Footer placeholder -->
     <div id="footer"></div>
     <script>
-        fetch('../footer.html')
+        fetch('https://elenavaltierra.github.io/cv_portfolio_eng/footer.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer').innerHTML = data;
