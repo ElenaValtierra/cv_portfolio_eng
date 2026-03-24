@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>portfolio</title>  <base href="https://elenavaltierra.github.io/cv_portfolio_eng/">  <link rel="icon" type="image/x-icon" href="images/favicon.png">
+  <title>portfolio</title>  <base href="https://elenavaltierra.com/">  <link rel="icon" type="image/x-icon" href="images/favicon.png">
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -79,7 +79,7 @@
     <script>
         async function loadHeader() {
             try {
-                const response = await fetch('https://elenavaltierra.github.io/cv_portfolio_eng/header.html');
+                const response = await fetch('https://elenavaltierra.com/header.html');
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const data = await response.text();
                 document.getElementById('header').innerHTML = data;
@@ -335,7 +335,7 @@
  <!-- Footer placeholder -->
     <div id="footer"></div>
     <script>
-        fetch('https://elenavaltierra.github.io/cv_portfolio_eng/footer.html')
+        fetch('https://elenavaltierra.com/footer.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer').innerHTML = data;
@@ -361,3 +361,4 @@
 </body>
 
 </html>
+

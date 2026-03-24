@@ -1,7 +1,7 @@
 import os
 import re
-abs_header = "https://elenavaltierra.github.io/cv_portfolio_eng/header.html"
-abs_footer = "https://elenavaltierra.github.io/cv_portfolio_eng/footer.html"
+abs_header = "https://elenavaltierra.com/header.html"
+abs_footer = "https://elenavaltierra.com/footer.html"
 
 patterns = [
     (r"fetch\(\s*'\.\./header\.html'\s*\)", f"fetch('{abs_header}')"),
@@ -26,3 +26,4 @@ for root, _, filenames in os.walk('.'):
                 open(path, 'w', encoding='utf-8').write(new)
                 print('patched', path)
 print('done')
+

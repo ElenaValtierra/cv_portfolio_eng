@@ -1,7 +1,7 @@
 import os
 import re
-abs_header = 'https://elenavaltierra.github.io/cv_portfolio_eng/header.html'
-abs_footer = 'https://elenavaltierra.github.io/cv_portfolio_eng/footer.html'
+abs_header = 'https://elenavaltierra.com/header.html'
+abs_footer = 'https://elenavaltierra.com/footer.html'
 for root, dirs, files in os.walk('.'):
     for name in files:
         if name.lower().endswith('.html'):
@@ -15,3 +15,4 @@ for root, dirs, files in os.walk('.'):
             with open(path, 'w', encoding='utf-8') as f:
                 f.write(text)
 print('patched all html includes to absolute paths')
+
