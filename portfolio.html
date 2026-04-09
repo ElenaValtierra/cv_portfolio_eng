@@ -87,11 +87,29 @@
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const data = await response.text();
                 document.getElementById('header').innerHTML = data;
+                initHeaderOffcanvas();
             } catch (err) {
                 console.error('Error loading header:', err);
                 document.getElementById('header').innerHTML = '<p>Error loading header</p>';
             }
         }
+
+        function initHeaderOffcanvas() {
+            const offcanvasEl = document.getElementById('offcanvasNavbar');
+            if (!offcanvasEl) return;
+
+            if (window.bootstrap && bootstrap.Offcanvas) {
+                bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
+                return;
+            }
+
+            window.addEventListener('load', () => {
+                if (window.bootstrap && bootstrap.Offcanvas) {
+                    bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
+                }
+            });
+        }
+
         loadHeader();
     </script>
     </div>
